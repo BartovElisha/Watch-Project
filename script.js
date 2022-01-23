@@ -1,26 +1,25 @@
 window.onload = function(){
-    setInterval(fSec,1000);
-    var sec = 0;
-    var min = 0;
-    var hour = 0;
+    setInterval(fSec,100);
+
+    let d = new Date();
+    let seconds = d.getSeconds();
+    let minutes = d.getMinutes();
+    let hours = d.getHours();
 
     function fSec(){
-        document.querySelector('.seconds-arrow').style.transform = 'rotate('+sec+'deg)';
-        document.querySelector('.minutes-arrow').style.transform = 'rotate('+min+'deg)';
-        document.querySelector('.hours-arrow').style.transform = 'rotate('+hour+'deg)';
+        // Get Seconds from Data Object 
+        d = new Date();
+        seconds = d.getSeconds();
+        sec_deg = seconds*6;  // 1 second = 6 Deg
 
-        if(sec+6 == 366)
-        {
-            sec = 0;
-            min = min + 6;
-            if(min+6 == 366){
-                min = 0;
-                hour = hour + 6;
-                if(hour+6 == 366){
-                    hour = 0;
-                }
-            }
-        }
-        sec = sec + 6;   
+        minutes = d.getMinutes();
+        min_deg = minutes*6;  // 1 minute = 6 Deg
+
+        hours = d.getHours();
+        hour_deg = hours*30 + minutes*0.5;  // 1 hour = 30 Deg, total 12 hours in 360 degs
+
+        document.querySelector('.seconds-arrow').style.transform = 'rotate('+sec_deg+'deg)';
+        document.querySelector('.minutes-arrow').style.transform = 'rotate('+min_deg+'deg)';
+        document.querySelector('.hours-arrow').style.transform = 'rotate('+hour_deg+'deg)';
     }
 }
