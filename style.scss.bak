@@ -9,7 +9,7 @@ $watch-size: 400px;
 }
 
 .h1 {
-    color: red;
+    color: green;
 }
 
 .clock {
