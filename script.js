@@ -29,5 +29,16 @@ window.onload = function(){
         document.querySelector('.seconds-arrow').style.transform = 'rotate('+sec_deg+'deg)';
         document.querySelector('.minutes-arrow').style.transform = 'rotate('+min_deg+'deg)';
         document.querySelector('.hours-arrow').style.transform = 'rotate('+hour_deg+'deg)';
+
+        // Print Date and Time
+        printDateTime(d);
     }
+}
+
+function printDateTime(date) {
+    let divElement = document.getElementById("date-time");
+    let hElement = document.getElementById("last-date-time");
+
+    hElement.remove();
+    divElement.innerHTML += `<h1 id="last-date-time">${date}</h1>`;
 }
