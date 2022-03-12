@@ -74,7 +74,40 @@ class Watch {
         if(date < 10) date = '0' + date;
         
         // get current day from date object
-        //let day = 
+        let day = currentDate.getDay(); 
+        
+        switch(day) {
+            case 0:
+                day = 'Sunday';
+                break;
+            
+            case 1:
+                day = 'Monday';
+                break;
+
+            case 2:
+                day = 'Tuesday';
+                break;
+
+            case 3:
+                day = 'Wednesday';
+                break;
+
+            case 4:
+                day = 'Thursday';
+                break;
+
+            case 5:
+                day = 'Friday';
+                break;
+
+            case 6:
+                day = 'Saturday';
+                break;
+
+            default:
+                break;
+        }
 
         // get current hours from date object
         let hours = currentDate.getHours();
@@ -113,6 +146,7 @@ class Watch {
                     .replace('yyyy',year)
                     .replace('mm',month)
                     .replace('dd',date)
+                    .replace('ww',day)
                     .replace('hh',hours)
                     .replace('mm',minutes)
                     .replace('ss',seconds);
@@ -121,6 +155,7 @@ class Watch {
     }
 
     start() {
+        this.render();
         this.timer = setInterval(() => {this.render()}, 1000);
     }
 
@@ -129,7 +164,7 @@ class Watch {
     }
 }
 
-let watch = new Watch({template: 'dd mm yyyy hh:mm:ss'});
+let watch = new Watch({template: 'dd mm yyyy (ww) hh:mm:ss'});
 
 window.onload = function() {
     watch.start();
